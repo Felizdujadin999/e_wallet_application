@@ -4,6 +4,7 @@ from data.models.credit_card import CreditCard
 class Account(CreditCard):
 
     def __init__(self, gender, NIN, BVN, email, address, first_name, last_name, dob):
+        super().__init__()
         self.gender = gender,
         self.BVN = BVN,
         self.NIN = NIN,
@@ -44,13 +45,13 @@ class Account(CreditCard):
         return self.address
 
     def set_last_name(self, value):
-        self.last_name = value;
+        self.last_name = value
 
     def get_last_name(self):
         return self.last_name
 
     def set_first_name(self, value):
-        self.first_name = value;
+        self.first_name = value
 
     def get_first_name(self):
         return self.first_name
@@ -72,5 +73,8 @@ class Account(CreditCard):
                     last_name:{self.last_name}
                     first_name:{self.first_name}
                     dob:{self.dob}
+                    card_number:{self.get_card_number()}
+                    cvv:{self.get_cvv()}
+                    expiry date:{self.get_expiry_date()}
                     ==========
                     """

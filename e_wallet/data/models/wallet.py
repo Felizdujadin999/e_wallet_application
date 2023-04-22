@@ -7,7 +7,7 @@ class EWallet:
         self.first_name = str
         self.last_name = str
         self.password = str
-        self.username = str
+        self.userName = str
         self.id = int
 
     def set_id(self, id):
@@ -34,11 +34,11 @@ class EWallet:
     def get_password(self):
         return self.password
 
-    def set_username(self, username):
-        self.username = username
+    def set_userName(self, username):
+        self.userName = username
 
-    def get_username(self):
-        return self.username
+    def get_userName(self):
+        return self.userName
 
     def str(self):
         return f"""
@@ -47,7 +47,7 @@ class EWallet:
                      first_name: {self.first_name}
                      last_name: {self.last_name}
                      password:{self.password}
-                     user_name:{self.username}
+                     user_name:{self.userName}
 
                      ==========
                      """
