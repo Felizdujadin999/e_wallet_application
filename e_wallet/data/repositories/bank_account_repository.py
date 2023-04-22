@@ -1,4 +1,4 @@
-class Bank_account:
+class Bank_account_repo:
     def save(self, accounts):
         raise NotImplementedError
 

@@ -1,11 +1,11 @@
-from data.models.credit_card import CreditCard
+from datetime import date
+
+from dateutil.relativedelta import relativedelta
 
 
-class Account(CreditCard):
+class register_bank_request:
 
     def __init__(self):
-        super().__init__()
-        self.id = int
         self.gender = str
         self.BVN = int
         self.NIN = int
@@ -15,6 +15,10 @@ class Account(CreditCard):
         self.first_name = str
         self.dob = str
         self.acc_number = int
+        self.card_number = int
+        self.cvv = int
+        self.expiry_date = date
+        self.pin = int
 
     def set_gender(self, value):
         self.gender = value
@@ -76,6 +80,32 @@ class Account(CreditCard):
     def get_acc_numbers(self):
         return self.acc_number
 
+    def set_card_number(self, value):
+        self.card_number = value
+
+    def get_card_number(self):
+        return self.card_number
+
+    def set_cvv(self, value):
+        self.cvv = value
+
+    def get_cvv(self):
+        return self.cvv
+
+    def set_pin(self, value):
+        self.pin = value
+
+    def get_pin(self):
+        return self.pin
+
+    def set_expiry_date(self):
+        current_date = date.today()
+        future_date = current_date + relativedelta(years=3)
+        self.expiry_date = future_date
+
+    def get_expiry_date(self):
+        return self.expiry_date
+
     def __str__(self):
         return f"""
                     ==========
@@ -88,7 +118,6 @@ class Account(CreditCard):
                     last_name:{self.last_name}
                     first_name:{self.first_name}
                     dob:{self.dob}
-                    account_number:{self.acc_number}
                     card_number:{self.get_card_number()}
                     cvv:{self.get_cvv()}
                     expiry date:{self.get_expiry_date()}

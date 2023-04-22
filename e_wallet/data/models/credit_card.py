@@ -7,6 +7,7 @@ class CreditCard:
         self.card_number = int
         self.cvv = int
         self.expiry_date = date
+        self.pin = int
 
     def set_card_number(self, value):
         self.card_number = value
@@ -15,10 +16,16 @@ class CreditCard:
         return self.card_number
 
     def set_cvv(self, value):
-        self.balance = value
+        self.cvv = value
 
     def get_cvv(self):
         return self.cvv
+
+    def set_pin(self, value):
+        self.pin = value
+
+    def get_pin(self):
+        return self.pin
 
     def set_expiry_date(self):
         current_date = date.today()

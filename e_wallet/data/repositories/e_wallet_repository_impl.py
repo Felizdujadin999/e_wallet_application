@@ -5,9 +5,8 @@ from data.repositories.e_wallet_repository import E_wallet_repo
 class E_wallet_repo_impl(E_wallet_repo):
 
     def __init__(self):
-        self.__e_wallets = EWallet
+        self.__e_wallet = EWallet
         self.__wallets: list[EWallet] = []
-
         self.count = 0
 
     def save(self, e_wallet: EWallet) -> str:
