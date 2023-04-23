@@ -16,14 +16,14 @@ class account_repo_impl(Bank_account_repo):
         self.count = 0
 
     def save(self, bank_account: Account):
-        credit_not_saved = bank_account.get_id() == 0
-        if credit_not_saved:
+        bank_account_not_saved = bank_account.get_id() == 0
+        if bank_account_not_saved:
             bank_account.set_id(self.count + 1)
             self.__accounts.append(bank_account)
             self.count += 1
         return bank_account
 
-    def find(self, id):
+    def find(self, account_number) -> Account:
         for i in self.__accounts:
-            if i.get_id() == id:
+            if i.get_acc_number() == account_number:
                 return i

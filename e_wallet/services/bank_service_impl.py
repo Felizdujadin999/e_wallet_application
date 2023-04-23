@@ -1,8 +1,12 @@
 import random
 
+from data.models.account import Account
+from data.repositories import bank_account_repository
+from data.repositories.bank_account_repo_impl import account_repo_impl
 from data.repositories.bank_account_repository import Bank_account_repo
 from dtos.requests.register_bank_account_request import register_bank_request
 from services.bank_service import Bank_service
+from utils.mapper import Mapper
 
 
 class bank_service_impl(Bank_service):
@@ -17,17 +21,23 @@ class bank_service_impl(Bank_service):
         self.cvv = 0
 
     def create_account(self: register_bank_request):
+        account = Account
+        Bank_account_repo.save(Mapper.map_account(account, register_bank_request))
 
+    def withdrawal(self, account_number, amount, password):
+        found_account = Bank_account_repo.find(account_number)
+        if amount > found_account.get_balance():
+            raise Exception("Insufficient Funds")
+        else:
+            found_account.update_balance(found_account.get_balance() - amount)
+        Bank_account_repo.save(found_account)
+        return "Withdrawal Successful"
+
+    def transfer(self, amount, password, account_number):
         pass
 
-    def withdrawal(self, amount, password):
-        pass
-
-    def transfer(self, amount, password):
-        pass
-
-    def check_balance(self):
-        pass
+    def check_balance(self, account):
+        return account.get_balance()
 
     def validate_acc_num(self, account_numbers) -> bool:
         for i in self.__acc_numbers:

@@ -13,7 +13,7 @@ class Test_e_wallet(TestCase):
         self.wallet = EWallet()
         self.wallet.set_first_name("felix")
         self.wallet.set_last_name("ezeike")
-        self.wallet.set_userName("felixezeike")
+        self.wallet.set_username("felixezeike")
         self.wallet.set_password("0000")
         self.e_wallet = E_wallet_repo_impl()
 
@@ -28,7 +28,7 @@ class Test_e_wallet(TestCase):
         self.wallet2 = EWallet()
         self.wallet2.set_first_name("felix2")
         self.wallet2.set_last_name("ezeike2")
-        self.wallet2.set_userName("felixezeike2")
+        self.wallet2.set_username("felixezeike2")
         self.wallet2.set_password("1111")
         self.e_wallet.save(self.wallet2)
         self.assertEqual(2, self.e_wallet.number_of_wallets())

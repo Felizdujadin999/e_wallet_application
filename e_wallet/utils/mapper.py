@@ -1,6 +1,6 @@
 from data.models.account import Account
 from data.models.wallet import EWallet
-from dtos.requests.register_bank_account_request import register_bank_register
+from dtos.requests.register_bank_account_request import register_bank_request
 from dtos.requests.register_request import Register_request
 from services.bank_service_impl import bank_service_impl
 
@@ -15,7 +15,7 @@ class Mapper:
         EWallet.set_password(request.get_password())
         return EWallet
 
-    def map_account(self: Account, bank_request: register_bank_register):
+    def map_account(self: Account, bank_request: register_bank_request):
         Account.set_gender(self, bank_request.get_gender())
         Account.set_bvn(self, bank_request.get_bvn())
         Account.set_nin(self, bank_request.get_nin())

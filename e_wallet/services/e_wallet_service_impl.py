@@ -11,6 +11,7 @@ class E_wallet_service_impl(E_wallet_service):
         return "Registration successful.."
 
     def integrate_card(self, card_number, cvv, expiry_date, first_name, last_name, password):
+
         pass
 
     def login(self, username, password):
