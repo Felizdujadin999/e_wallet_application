@@ -4,3 +4,9 @@ class Bank_account_repo:
 
     def find(self, id):
         raise NotImplementedError
+
+    def number_of_account(self):
+        raise NotImplementedError
+
+    def find_by_account_number(self,account_number):
+        raise NotImplementedError

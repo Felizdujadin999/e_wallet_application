@@ -15,6 +15,7 @@ class Account(CreditCard):
         self.first_name = str
         self.dob = str
         self.acc_number = int
+        self.balance = float
 
     def set_gender(self, value):
         self.gender = value
@@ -70,11 +71,17 @@ class Account(CreditCard):
     def get_id(self):
         return self.id
 
-    def set_acc_numbers(self, acc_number):
+    def set_acc_number(self, acc_number):
         self.acc_number = acc_number
 
-    def get_acc_numbers(self):
+    def get_acc_number(self):
         return self.acc_number
+
+    def set_balance(self, balance):
+        self.balance = balance
+
+    def get_balance(self):
+        return self.balance
 
     def __str__(self):
         return f"""
