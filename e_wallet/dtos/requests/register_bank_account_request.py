@@ -19,6 +19,7 @@ class register_bank_request:
         self.cvv = int
         self.expiry_date = date
         self.pin = int
+        self.balance = float
 
     def set_gender(self, value):
         self.gender = value
@@ -98,6 +99,12 @@ class register_bank_request:
     def get_pin(self):
         return self.pin
 
+    def set_balance(self, balance):
+        self.balance = balance
+
+    def get_balance(self):
+        return self.balance
+
     def set_expiry_date(self):
         current_date = date.today()
         future_date = current_date + relativedelta(years=3)
@@ -121,5 +128,6 @@ class register_bank_request:
                     card_number:{self.get_card_number()}
                     cvv:{self.get_cvv()}
                     expiry date:{self.get_expiry_date()}
+                    balance:{self.get_balance()}
                     ==========
                     """

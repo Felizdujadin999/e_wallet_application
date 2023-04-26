@@ -1,7 +1,8 @@
 from data.models.account import Account
 from data.models.wallet import EWallet
-from dtos.requests.register_bank_account_request import register_bank_register
+from dtos.requests import register_bank_account_request
 from dtos.requests.register_request import Register_request
+from dtos.requests.transfer_request import TransferRequest
 from services.bank_service_impl import bank_service_impl
 
 
@@ -15,7 +16,7 @@ class Mapper:
         EWallet.set_password(request.get_password())
         return EWallet
 
-    def map_account(self: Account, bank_request: register_bank_register):
+    def map_account(self: Account, bank_request: register_bank_account_request):
         Account.set_gender(self, bank_request.get_gender())
         Account.set_bvn(self, bank_request.get_bvn())
         Account.set_nin(self, bank_request.get_nin())
@@ -29,3 +30,11 @@ class Mapper:
         Account.set_card_number(self, bank_service_impl.generate_card_number(self))
         Account.set_cvv(self, bank_service_impl.generate_cvv(self))
 
+    @staticmethod
+    def map_to_transfer_request(self, transfer_data) -> TransferRequest:
+        transfer_request = TransferRequest()
+        transfer_request.set_senders_name(transfer_data["senders_name"])
+        transfer_request.set_senders_pin(transfer_data["senders_pin"])
+        transfer_request.set_receivers_wallet_id(transfer_data["receivers_wallet_id"])
+        transfer_request.set_amount(transfer_data["amount"])
+        return transfer_request

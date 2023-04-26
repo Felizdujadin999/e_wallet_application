@@ -6,8 +6,6 @@ from data.repositories.e_wallet_repository_impl import E_wallet_repo_impl
 
 
 class Test_e_wallet(TestCase):
-    wallet: EWallet
-    e_wallet: E_wallet_repo
 
     def setUp(self) -> None:
         self.wallet = EWallet()
